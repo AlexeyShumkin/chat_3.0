@@ -66,7 +66,7 @@ bool PubPostHandler::specHandle(State* state, DataBase* db)
     fst.open(db->getMsgDataPath() / state->getDS()[1], std::fstream::app |  std::fstream::out);
     if(fst.is_open())
     {
-        fst << state->getDS()[0] << " -> " << state->getDS()[1] << " | " << state->getDS()[2] << '\n';
+        fst << state->getDS()[0] << " -> all | " << state->getDS()[2] << " | " << state->getDS()[3] << '\n';
         fst.close();
         return true;
     }
@@ -75,6 +75,8 @@ bool PubPostHandler::specHandle(State* state, DataBase* db)
 
 bool PubReadHandler::specHandle(State* state, DataBase* db)
 {
+    if(!fs::exists(db->getMsgDataPath() / "all"))
+        return false;
     state->setPathForRead(db->getMsgDataPath() / "all");
     return true;
 }
@@ -86,9 +88,18 @@ bool PvtPostHandler::specHandle(State* state, DataBase* db)
     fst.open(db->getMsgDataPath() / dialog, std::fstream::app |  std::fstream::out);
     if(fst.is_open())
     {
-        fst << state->getDS()[0] << " -> " << state->getDS()[1] << " | " << state->getDS()[2] << '\n';
+        fst << state->getDS()[0] << " -> " << state->getDS()[1] << " | " << state->getDS()[2] << " | " << state->getDS()[3] <<'\n';
         fst.close();
         return true;
     }
     return false;
+}
+
+bool PvtReadHandler::specHandle(State* state, DataBase* db)
+{
+    auto dialog = std::to_string(makeDialogID(state->getDS()[0], state->getDS()[1]));
+    if(!fs::exists(db->getMsgDataPath() / dialog))
+        return false;
+    state->setPathForRead(db->getMsgDataPath() / dialog);
+    return true;
 }

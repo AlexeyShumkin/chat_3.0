@@ -11,10 +11,11 @@ public:
     Handler* getHD() const;
     const Dataset& getDS() const;
     void setPathForRead(const fs::path& path);
+    std::string getCurrentTime();
 protected:
-    fs::path pathForRead_;
     void setState(Chat* chat, State* state);
     void exit(Chat* chat);
+    fs::path pathForRead_;
     Handler* hd_{ nullptr };
     Dataset ds_;
 };

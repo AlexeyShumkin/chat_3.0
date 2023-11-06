@@ -1,4 +1,3 @@
-#include <stdlib.h>
 #include "chat.h"
  
 int main()

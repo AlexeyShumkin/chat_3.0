@@ -1,5 +1,7 @@
 CMakeFiles/release.dir/main.cpp.o: /home/awl/projects/chat_3.0/main.cpp \
- /usr/include/stdc-predef.h /usr/include/c++/11/stdlib.h \
+ /usr/include/stdc-predef.h /home/awl/projects/chat_3.0/chat.h \
+ /home/awl/projects/chat_3.0/states.h \
+ /home/awl/projects/chat_3.0/handler.h /usr/include/c++/11/stdlib.h \
  /usr/include/c++/11/cstdlib \
  /usr/include/x86_64-linux-gnu/c++/11/bits/c++config.h \
  /usr/include/x86_64-linux-gnu/c++/11/bits/os_defines.h \
@@ -46,9 +48,7 @@ CMakeFiles/release.dir/main.cpp.o: /home/awl/projects/chat_3.0/main.cpp \
  /usr/include/x86_64-linux-gnu/bits/struct_mutex.h \
  /usr/include/x86_64-linux-gnu/bits/struct_rwlock.h /usr/include/alloca.h \
  /usr/include/x86_64-linux-gnu/bits/stdlib-float.h \
- /usr/include/c++/11/bits/std_abs.h /home/awl/projects/chat_3.0/chat.h \
- /home/awl/projects/chat_3.0/states.h \
- /home/awl/projects/chat_3.0/handler.h \
+ /usr/include/c++/11/bits/std_abs.h \
  /home/awl/projects/chat_3.0/database.h /usr/include/c++/11/iostream \
  /usr/include/c++/11/ostream /usr/include/c++/11/ios \
  /usr/include/c++/11/iosfwd /usr/include/c++/11/bits/stringfwd.h \

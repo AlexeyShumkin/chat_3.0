@@ -21,6 +21,14 @@ void State::setPathForRead(const fs::path& path)
     pathForRead_ = path;
 }
 
+std::string State::getCurrentTime()
+{
+    time_t now = time(nullptr);
+	char buffer[20];
+	strftime(buffer, sizeof(buffer), "%X %d/%m/%Y", localtime(&now));
+	return buffer;
+}
+
 void State::setState(Chat* chat, State* state)
 {
     chat->setState(state);
@@ -142,8 +150,11 @@ bool PubPost::post()
     std::string text;
 	std::cout << "Message: ";
 	std::getline(std::cin.ignore(), text);
+    if(text.empty())
+        return false;
     ds_.push_back(text);
-    return !text.empty();
+    ds_.push_back(getCurrentTime());
+    return true;
 }
 
 PubRead::PubRead(const std::string& user)
@@ -154,8 +165,10 @@ PubRead::PubRead(const std::string& user)
 
 void PubRead::request(Chat* chat)
 {
-    chat->send(this);
-    read();
+    if(!chat->send(this))
+        std::cout << "There are no messages in this dialog yet!\n";
+    else
+        read();
     setState(chat, new PubPost(ds_[0]));
 }
 
@@ -204,8 +217,14 @@ PvtRead::PvtRead(const std::string& user1, const std::string& user2)
 {
     ds_.push_back(user1);
     ds_.push_back(user2);
+    hd_ = new PvtReadHandler();
 }
 
 void PvtRead::request(Chat* chat)
 {
+    if(!chat->send(this))
+        std::cout << "There are no messages in this dialog yet!\n";
+    else
+        read();
+    setState(chat, new PvtPost(ds_[0], ds_[1]));
 }

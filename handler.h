@@ -1,4 +1,5 @@
 #pragma once
+#include <stdlib.h>
 #include "database.h"
 
 class State;
@@ -37,6 +38,12 @@ public:
 };
 
 class PvtPostHandler : public Handler
+{
+public:
+    bool specHandle(State* state, DataBase* db) override;
+};
+
+class PvtReadHandler : public Handler
 {
 public:
     bool specHandle(State* state, DataBase* db) override;
