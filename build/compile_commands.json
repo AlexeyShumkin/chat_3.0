@@ -1,0 +1,27 @@
+[
+{
+  "directory": "/home/awl/projects/chat_3.0/build",
+  "command": "/usr/bin/g++   -g -o CMakeFiles/release.dir/main.cpp.o -c /home/awl/projects/chat_3.0/main.cpp",
+  "file": "/home/awl/projects/chat_3.0/main.cpp"
+},
+{
+  "directory": "/home/awl/projects/chat_3.0/build",
+  "command": "/usr/bin/g++   -g -o CMakeFiles/release.dir/chat.cpp.o -c /home/awl/projects/chat_3.0/chat.cpp",
+  "file": "/home/awl/projects/chat_3.0/chat.cpp"
+},
+{
+  "directory": "/home/awl/projects/chat_3.0/build",
+  "command": "/usr/bin/g++   -g -o CMakeFiles/release.dir/database.cpp.o -c /home/awl/projects/chat_3.0/database.cpp",
+  "file": "/home/awl/projects/chat_3.0/database.cpp"
+},
+{
+  "directory": "/home/awl/projects/chat_3.0/build",
+  "command": "/usr/bin/g++   -g -o CMakeFiles/release.dir/states.cpp.o -c /home/awl/projects/chat_3.0/states.cpp",
+  "file": "/home/awl/projects/chat_3.0/states.cpp"
+},
+{
+  "directory": "/home/awl/projects/chat_3.0/build",
+  "command": "/usr/bin/g++   -g -o CMakeFiles/release.dir/handler.cpp.o -c /home/awl/projects/chat_3.0/handler.cpp",
+  "file": "/home/awl/projects/chat_3.0/handler.cpp"
+}
+]
