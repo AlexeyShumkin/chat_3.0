@@ -3,24 +3,23 @@
 
 class Chat;
 
-class State
+class Request
 {
 public:
-    virtual ~State();
+    virtual ~Request();
     virtual void request(Chat* chat) = 0;
-    Handler* getHD() const;
-    const Dataset& getDS() const;
+    Handler* getHandler() const;
+    const Dataset& getDataset() const;
     void setPathForRead(const fs::path& path);
-    std::string getCurrentTime();
 protected:
-    void setState(Chat* chat, State* state);
+    void makeRequest(Chat* chat, Request* request);
     void exit(Chat* chat);
     fs::path pathForRead_;
-    Handler* hd_{ nullptr };
-    Dataset ds_;
+    Handler* handler_{ nullptr };
+    Dataset dataset_;
 };
 
-class SignUp : public State
+class SignUp : public Request
 {
 public:
     SignUp();
@@ -35,16 +34,19 @@ public:
     void request(Chat* chat) override;
 };
 
-class PubPost : public State
+class PubPost : public Request
 {
 public:
     PubPost() = default;
     PubPost(const std::string& sender);
     void request(Chat* chat) override;
     bool post();
+    std::string getCurrentTime();
+private:
+    std::string recipient_{ "all" };
 };
 
-class PubRead : public State
+class PubRead : public Request
 {
 public:
     PubRead() = default;
@@ -65,4 +67,13 @@ class PvtRead : public PubRead
 public:
     PvtRead(const std::string& user1, const std::string& user2);
     void request(Chat* chat) override;
+};
+
+class UsersDisplay : public Request
+{
+public:
+    UsersDisplay() = default;
+    UsersDisplay(const std::string& user);
+    void request(Chat* chat) override;
+    void showUsers();
 };

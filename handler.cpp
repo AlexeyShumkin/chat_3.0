@@ -1,5 +1,5 @@
 #include "handler.h"
-#include "states.h"
+#include "request.h"
 
 size_t Handler::makeDialogID(const std::string& sender, const std::string& recipient)
 {
@@ -24,13 +24,13 @@ size_t Handler::hashFunction(const std::string& password)
     return res;
 }
 
-bool SignUpHandler::specHandle(State* state, DataBase* db)
+bool SignUpHandler::specHandle(Request* request, DataBase* database)
 {
-   if(!fs::exists(db->getUserDataPath() / state->getDS()[0]))
+   if(!fs::exists(database->getUserDataPath() / request->getDataset()[0]))
     {
-        size_t hash = hashFunction(state->getDS()[1]);
+        size_t hash = hashFunction(request->getDataset()[1]);
         std::fstream fst;
-        fst.open(db->getUserDataPath() / state->getDS()[0], std::fstream::out);
+        fst.open(database->getUserDataPath() / request->getDataset()[0], std::fstream::out);
         if(fst.is_open())
         {
             fst << hash;
@@ -41,14 +41,14 @@ bool SignUpHandler::specHandle(State* state, DataBase* db)
     return false;
 }
 
-bool SignInHandler::specHandle(State* state, DataBase* db)
+bool SignInHandler::specHandle(Request* request, DataBase* database)
 {
-    if(fs::exists(db->getUserDataPath() / state->getDS()[0]))
+    if(fs::exists(database->getUserDataPath() / request->getDataset()[0]))
     {
-        size_t hash = hashFunction(state->getDS()[1]);
+        size_t hash = hashFunction(request->getDataset()[1]);
         size_t tmp = 0;
         std::fstream fst;
-        fst.open(db->getUserDataPath() / state->getDS()[0], std::fstream::in);
+        fst.open(database->getUserDataPath() / request->getDataset()[0], std::fstream::in);
         if(fst.is_open())
         {
             fst >> tmp;
@@ -60,46 +60,56 @@ bool SignInHandler::specHandle(State* state, DataBase* db)
     return false;
 }
 
-bool PubPostHandler::specHandle(State* state, DataBase* db)
+bool PubPostHandler::specHandle(Request* request, DataBase* database)
 {
     std::fstream fst;
-    fst.open(db->getMsgDataPath() / state->getDS()[1], std::fstream::app |  std::fstream::out);
+    fst.open(database->getMsgDataPath() / request->getDataset()[1], std::fstream::app |  std::fstream::out);
     if(fst.is_open())
     {
-        fst << state->getDS()[0] << " -> all | " << state->getDS()[2] << " | " << state->getDS()[3] << '\n';
+        fst << request->getDataset()[0] << " -> all | " << request->getDataset()[2] << " | " << request->getDataset()[3] << '\n';
         fst.close();
         return true;
     }
     return false;
 }
 
-bool PubReadHandler::specHandle(State* state, DataBase* db)
+bool PubReadHandler::specHandle(Request* request, DataBase* database)
 {
-    if(!fs::exists(db->getMsgDataPath() / "all"))
+    if(!fs::exists(database->getMsgDataPath() / "all"))
         return false;
-    state->setPathForRead(db->getMsgDataPath() / "all");
+    request->setPathForRead(database->getMsgDataPath() / "all");
     return true;
 }
 
-bool PvtPostHandler::specHandle(State* state, DataBase* db)
+bool PvtPostHandler::specHandle(Request* request, DataBase* database)
 {
+    if(!fs::exists(database->getUserDataPath() / request->getDataset()[1]))
+        return false;
     std::fstream fst;
-    auto dialog = std::to_string(makeDialogID(state->getDS()[0], state->getDS()[1]));
-    fst.open(db->getMsgDataPath() / dialog, std::fstream::app |  std::fstream::out);
+    auto dialog = std::to_string(makeDialogID(request->getDataset()[0], request->getDataset()[1]));
+    fst.open(database->getMsgDataPath() / dialog, std::fstream::app |  std::fstream::out);
     if(fst.is_open())
     {
-        fst << state->getDS()[0] << " -> " << state->getDS()[1] << " | " << state->getDS()[2] << " | " << state->getDS()[3] <<'\n';
+        fst << request->getDataset()[0] << " -> " << request->getDataset()[1] << " | " << request->getDataset()[2] << " | " << request->getDataset()[3] <<'\n';
         fst.close();
         return true;
     }
     return false;
 }
 
-bool PvtReadHandler::specHandle(State* state, DataBase* db)
+bool PvtReadHandler::specHandle(Request* request, DataBase* database)
 {
-    auto dialog = std::to_string(makeDialogID(state->getDS()[0], state->getDS()[1]));
-    if(!fs::exists(db->getMsgDataPath() / dialog))
+    auto dialog = std::to_string(makeDialogID(request->getDataset()[0], request->getDataset()[1]));
+    if(!fs::exists(database->getMsgDataPath() / dialog))
         return false;
-    state->setPathForRead(db->getMsgDataPath() / dialog);
+    request->setPathForRead(database->getMsgDataPath() / dialog);
+    return true;
+}
+
+bool UsersDisplayHandler::specHandle(Request* request, DataBase* database)
+{
+    if(!fs::exists(database->getUserDataPath()))
+        return false;
+    request->setPathForRead(database->getUserDataPath());
     return true;
 }

@@ -111,19 +111,19 @@ CMakeFiles/release.dir/database.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/release.dir/database.cpp.s"
 	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/awl/projects/chat_3.0/database.cpp -o CMakeFiles/release.dir/database.cpp.s
 
-CMakeFiles/release.dir/states.cpp.o: CMakeFiles/release.dir/flags.make
-CMakeFiles/release.dir/states.cpp.o: ../states.cpp
-CMakeFiles/release.dir/states.cpp.o: CMakeFiles/release.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/awl/projects/chat_3.0/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/release.dir/states.cpp.o"
-	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/release.dir/states.cpp.o -MF CMakeFiles/release.dir/states.cpp.o.d -o CMakeFiles/release.dir/states.cpp.o -c /home/awl/projects/chat_3.0/states.cpp
+CMakeFiles/release.dir/request.cpp.o: CMakeFiles/release.dir/flags.make
+CMakeFiles/release.dir/request.cpp.o: ../request.cpp
+CMakeFiles/release.dir/request.cpp.o: CMakeFiles/release.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/awl/projects/chat_3.0/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/release.dir/request.cpp.o"
+	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/release.dir/request.cpp.o -MF CMakeFiles/release.dir/request.cpp.o.d -o CMakeFiles/release.dir/request.cpp.o -c /home/awl/projects/chat_3.0/request.cpp
 
-CMakeFiles/release.dir/states.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/release.dir/states.cpp.i"
-	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/awl/projects/chat_3.0/states.cpp > CMakeFiles/release.dir/states.cpp.i
+CMakeFiles/release.dir/request.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/release.dir/request.cpp.i"
+	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/awl/projects/chat_3.0/request.cpp > CMakeFiles/release.dir/request.cpp.i
 
-CMakeFiles/release.dir/states.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/release.dir/states.cpp.s"
-	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/awl/projects/chat_3.0/states.cpp -o CMakeFiles/release.dir/states.cpp.s
+CMakeFiles/release.dir/request.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/release.dir/request.cpp.s"
+	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/awl/projects/chat_3.0/request.cpp -o CMakeFiles/release.dir/request.cpp.s
 
 CMakeFiles/release.dir/handler.cpp.o: CMakeFiles/release.dir/flags.make
 CMakeFiles/release.dir/handler.cpp.o: ../handler.cpp
@@ -144,7 +144,7 @@ release_OBJECTS = \
 "CMakeFiles/release.dir/main.cpp.o" \
 "CMakeFiles/release.dir/chat.cpp.o" \
 "CMakeFiles/release.dir/database.cpp.o" \
-"CMakeFiles/release.dir/states.cpp.o" \
+"CMakeFiles/release.dir/request.cpp.o" \
 "CMakeFiles/release.dir/handler.cpp.o"
 
 # External object files for target release
@@ -153,7 +153,7 @@ release_EXTERNAL_OBJECTS =
 release: CMakeFiles/release.dir/main.cpp.o
 release: CMakeFiles/release.dir/chat.cpp.o
 release: CMakeFiles/release.dir/database.cpp.o
-release: CMakeFiles/release.dir/states.cpp.o
+release: CMakeFiles/release.dir/request.cpp.o
 release: CMakeFiles/release.dir/handler.cpp.o
 release: CMakeFiles/release.dir/build.make
 release: CMakeFiles/release.dir/link.txt

@@ -16,8 +16,8 @@
 },
 {
   "directory": "/home/awl/projects/chat_3.0/build",
-  "command": "/usr/bin/g++   -g -o CMakeFiles/release.dir/states.cpp.o -c /home/awl/projects/chat_3.0/states.cpp",
-  "file": "/home/awl/projects/chat_3.0/states.cpp"
+  "command": "/usr/bin/g++   -g -o CMakeFiles/release.dir/request.cpp.o -c /home/awl/projects/chat_3.0/request.cpp",
+  "file": "/home/awl/projects/chat_3.0/request.cpp"
 },
 {
   "directory": "/home/awl/projects/chat_3.0/build",

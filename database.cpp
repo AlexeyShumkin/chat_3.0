@@ -1,16 +1,9 @@
 #include "database.h"
-#include "handler.h"
-#include "states.h"
+#include "request.h"
 
-const fs::path& DataBase::getUserDataPath() const
-{
-    return userDataPath_;
-}
+const fs::path& DataBase::getUserDataPath() const { return userDataPath_; }
 
-const fs::path& DataBase::getMsgDataPath() const
-{
-    return msgDataPath_;
-}
+const fs::path& DataBase::getMsgDataPath() const { return msgDataPath_; }
 
 LocalDB::LocalDB()
 {
@@ -19,8 +12,8 @@ LocalDB::LocalDB()
 	fs::create_directory(msgDataPath_);
 }
 
-bool LocalDB::handle(State* state)
+bool LocalDB::handle(Request* request)
 {
-    hd_ = state->getHD();
-    return hd_->specHandle(state, this);
+    handler_ = request->getHandler();
+    return handler_->specHandle(request, this);
 }

@@ -1,13 +1,17 @@
 #include "chat.h"
 
-Chat::Chat(DataBase* db) : db_{ db }
-{
-    state_ = new SignUp();
-}
+Chat::Chat(DataBase* database) : database_{ database } { request_ = new SignUp(); }
 
-Chat::~Chat()
+Chat::~Chat() { delete request_; }
+
+void Chat::request() { request_->request(this); }
+
+bool Chat::send(Request* request) const { return database_->handle(request); }
+
+void Chat::makeRequest(Request* request)
 {
-    delete state_;
+    delete request_;
+    request_ = request;
 }
 
 void Chat::run()
@@ -16,20 +20,4 @@ void Chat::run()
     while(active_)
         request();
     std::cout << "Goodbye!\n";
-}
-
-void Chat::request()
-{
-    state_->request(this);
-}
-
-bool Chat::send(State* state) const
-{
-    return db_->handle(state);
-}
-
-void Chat::setState(State* state)
-{
-    delete state_;
-    state_ = state;
 }
