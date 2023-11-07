@@ -7,8 +7,8 @@ file(REMOVE_RECURSE
   "CMakeFiles/release.dir/handler.cpp.o.d"
   "CMakeFiles/release.dir/main.cpp.o"
   "CMakeFiles/release.dir/main.cpp.o.d"
-  "CMakeFiles/release.dir/states.cpp.o"
-  "CMakeFiles/release.dir/states.cpp.o.d"
+  "CMakeFiles/release.dir/request.cpp.o"
+  "CMakeFiles/release.dir/request.cpp.o.d"
   "release"
   "release.pdb"
 )

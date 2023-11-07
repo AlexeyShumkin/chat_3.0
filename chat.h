@@ -1,7 +1,7 @@
 #pragma once
-#include "states.h"
+#include "request.h"
 
-class State;
+class Request;
 
 class Chat
 {
@@ -10,11 +10,11 @@ public:
     ~Chat();
     void run();
     void request();
-    bool send(State* state) const;
+    bool send(Request* request) const;
 private:
-    friend class State; 
-    void setState(State* state);
+    friend class Request; 
+    void makeRequest(Request* request);
     bool active_{ true };
-    State* state_{ nullptr };
-    DataBase* db_{ nullptr };
+    Request* request_{ nullptr };
+    DataBase* database_{ nullptr };
 };
