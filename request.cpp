@@ -47,6 +47,7 @@ void SignUp::sign()
 	std::cin >> login;
 	std::cout << "Enter your password: ";
 	std::cin >> password;
+    dataset_.clear();
     dataset_.push_back(login);
     dataset_.push_back(password);
 }

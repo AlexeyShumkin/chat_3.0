@@ -26,7 +26,7 @@ size_t Handler::hashFunction(const std::string& password)
 
 bool SignUpHandler::specHandle(Request* request, DataBase* database)
 {
-   if(!fs::exists(database->getUserDataPath() / request->getDataset()[0]))
+    if(!fs::exists(database->getUserDataPath() / request->getDataset()[0]))
     {
         size_t hash = hashFunction(request->getDataset()[1]);
         std::fstream fst;
