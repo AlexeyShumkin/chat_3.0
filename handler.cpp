@@ -66,7 +66,9 @@ bool PubPostHandler::specHandle(Request* request, DataBase* database)
     fst.open(database->getMsgDataPath() / request->getDataset()[1], std::fstream::app |  std::fstream::out);
     if(fst.is_open())
     {
-        fst << request->getDataset()[0] << " -> all | " << request->getDataset()[2] << " | " << request->getDataset()[3] << '\n';
+        fst << request->getDataset()[0] 
+        << " -> all | " << request->getDataset()[2] 
+        << " | " << request->getDataset()[3] << '\n';
         fst.close();
         return true;
     }
@@ -90,7 +92,10 @@ bool PvtPostHandler::specHandle(Request* request, DataBase* database)
     fst.open(database->getMsgDataPath() / dialog, std::fstream::app |  std::fstream::out);
     if(fst.is_open())
     {
-        fst << request->getDataset()[0] << " -> " << request->getDataset()[1] << " | " << request->getDataset()[2] << " | " << request->getDataset()[3] <<'\n';
+        fst << request->getDataset()[0] << " -> " 
+        << request->getDataset()[1] << " | " 
+        << request->getDataset()[2] << " | " 
+        << request->getDataset()[3] <<'\n';
         fst.close();
         return true;
     }
